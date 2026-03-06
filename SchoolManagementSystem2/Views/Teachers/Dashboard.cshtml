@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Teacher Dashboard";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">👩‍🏫 Teacher Dashboard</h2>
+
+    <div class="text-centre mb-4">
+
+        @if (Model != null && !string.IsNullOrEmpty(Model.Photopath))
+        {
+            <img src="@Url.Content("~/images/teacher/" + Model.Photopath)"
+            width="150" height="150"
+            class="rounded-circle shadow"/>
+        }
+        else
+        {
+            <p>No Image Available</p>
+        }
+        <h4 class="mt-2">@Model?.FirstName @Model?.LastName</h4>
+        <p>@Model?.Email</p>
+    </div>
+
+    <div class="row">
+
+        <!-- My Students -->
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">My Students</h5>
+                    <p class="card-text text-muted">View assigned students</p>
+                    <a asp-controller="Students" asp-action="Index" class="btn btn-primary btn-sm">
+                        Open
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance -->
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Attendance</h5>
+                    <p class="card-text text-muted">Mark & view attendance</p>
+                    <a asp-controller="Attendance" asp-action="Index" class="btn btn-success btn-sm">
+                        Open
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses -->
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">My Courses</h5>
+                    <p class="card-text text-muted">Courses assigned</p>
+                    <a asp-controller="Courses" asp-action="Index" class="btn btn-warning btn-sm">
+                        Open
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports -->
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Reports</h5>
+                    <p class="card-text text-muted">Student reports</p>
+                    <a asp-controller="Reports" asp-action="Index" class="btn btn-danger btn-sm">
+                        Open
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

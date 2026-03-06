@@ -1,0 +1,30 @@
+﻿@using SchoolManagementSystem2.Areas.Identity.Data
+@model List<ApplicationUser>
+
+<h2>Users</h2>
+
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>
+                <form asp-action="MakeTeacher" method="post" style="display:inline">
+                    <input type="hidden" name="userId" value="@user.Id" />
+                    <button class="btn btn-primary btn-sm">Make Teacher</button>
+                </form>
+
+                <form asp-action="MakeStudent" method="post" style="display:inline">
+                    <input type="hidden" name="userId" value="@user.Id" />
+                    <button class="btn btn-success btn-sm">Make Student</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+

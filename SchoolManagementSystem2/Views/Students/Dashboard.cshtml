@@ -1,0 +1,54 @@
+﻿@model SchoolManagementSystem2.Models.Student
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<h2 class="mb-4">🎓 Student Dashboard</h2>
+<div class="text-centre mb-4">
+    
+    @if(Model !=null && !string.IsNullOrEmpty(Model.Photopath))
+    {
+        <img src="@Url.Content("~/images/student/" + Model.Photopath)"
+        width="150" height="150"
+        class="rounded-circle shadow"/>
+    }
+    else
+    {
+        <p>No Image Available</p>
+        
+    }
+    <h4 class="mt-2">@Model?.FirstName @Model?.LastName</h4>
+    <p>@Model?.Email</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow mb-3">
+            <div class="card-body text-center">
+                <h5>My Profile</h5>
+                <p>View your details</p>
+                <a asp-action="Details" class="btn btn-primary">Profile</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card shadow mb-3">
+            <div class="card-body text-center">
+                <h5>Students List</h5>
+                <p>View classmates</p>
+                <a asp-action="Index" class="btn btn-success">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow mb-3">
+            <div class="card-body text-center">
+                <h5>Attendance</h5>
+                <p>View attendance</p>
+                <a asp-controller="Attendance" asp-action="Index" class="btn btn-warning">Attendance</a>
+            </div>
+        </div>
+    </div>
+</div>
